@@ -1,0 +1,12 @@
+path: C:/D/GitHub/bread/YOLODataset
+train: images/train
+val: images/val
+test: images/test
+
+names:
+    0: RoundBread
+    1: Hambuger
+    2: Bread
+    3: Sandwich
+    4: Toast
+    5: Croissant
