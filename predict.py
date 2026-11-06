@@ -29,7 +29,7 @@ def main():
         "--source",
         type=str,
         default=None,
-        help="預測來源：圖片路徑、資料夾、影片檔或攝影機編號（預設優先找 test.jpg，若無則預測 YOLODataset/images/test）"
+        help="預測來源：圖片路徑、資料夾、影片檔或攝影機編號（預設優先預測 YOLODataset/images/test 下的所有檔案，若無則預測 test.jpg）"
     )
     parser.add_argument(
         "--model",
@@ -74,13 +74,13 @@ def main():
     if args.source:
         source_path = args.source
     else:
-        test_jpg = base_dir / "test.jpg"
-        if test_jpg.exists():
-            source_path = str(test_jpg)
+        default_test_dir = base_dir / "YOLODataset" / "images" / "test"
+        if default_test_dir.exists() and any(default_test_dir.iterdir()):
+            source_path = str(default_test_dir)
         else:
-            default_test_dir = base_dir / "YOLODataset" / "images" / "test"
-            if default_test_dir.exists() and any(default_test_dir.iterdir()):
-                source_path = str(default_test_dir)
+            test_jpg = base_dir / "test.jpg"
+            if test_jpg.exists():
+                source_path = str(test_jpg)
             else:
                 source_path = str(base_dir / "YOLODataset" / "images" / "val")
 

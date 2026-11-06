@@ -32,7 +32,9 @@ pip --version
 
 ## 2-1　建立虛擬環境
 
+```bash
 python -m venv venv
+```
 
 執行後專案資料夾內會出現 venv 資料夾，裡面有一份獨立的 Python 與 pip。
 
